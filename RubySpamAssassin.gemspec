@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
+    "RubySpamAssassin.gemspec",
     "VERSION",
     "features/RubySpamAssassin.feature",
     "features/step_definitions/RubySpamAssassin_steps.rb",
