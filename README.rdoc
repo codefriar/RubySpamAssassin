@@ -1,6 +1,18 @@
 = RubySpamAssassin
 
-Description goes here.
+Interacting with SpamAssassin's daemon process used to be a pain in the ass. Shelling out to run spamc, parsing the text etc.
+
+Now you just need to:
+    require 'RubySpamAssassin'
+    include RubySpamAssassin
+
+    spam_client = SpamClient.new("host_running_spamd", "port_spamd_is_listening_on", timeout)
+    report = spam_client.report("some string here, or better yet a variable")
+    p report.inspect
+
+Wasn't that easy?
+
+Cucumber and rspec tests are on their way.
 
 == Contributing to RubySpamAssassin
  
@@ -14,6 +26,5 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2011 Kevin. See LICENSE.txt for
-further details.
+Copyright (c) 2011 Kevin Poorman. See LICENSE.txt for further details.
 
