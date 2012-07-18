@@ -7,7 +7,9 @@ Now you just need to:
     include RubySpamAssassin
 
     spam_client = SpamClient.new("host_running_spamd", "port_spamd_is_listening_on", timeout)
-    report = spam_client.report("some string here, or better yet a variable")
+    # MyMailer is your ActionMailer
+    # check will also accept a string, if you're into that kind of thing
+    report = spam_client.check(MyMailer.my_email.to_s)
     p report.inspect
 
 Wasn't that easy?
