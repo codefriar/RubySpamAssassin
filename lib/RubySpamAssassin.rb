@@ -13,7 +13,7 @@ module RubySpamAssassin
 
     #returns true if the message was spam, otherwise false
     def spam?
-      (@spam == "True" || @spam == "Yes") ? True : False
+      (@spam == "True" || @spam == "Yes") ? true : false
     end
   end
 
@@ -21,33 +21,32 @@ module RubySpamAssassin
 
     require 'socket'
     require 'timeout'
-#    require 'spam_result'
 
     def initialize(host="localhost", port=783, timeout=5)
       @port = port
       @host = host
       @timeout =timeout
-      @socket = TCPsocket.open(@host, @port)
+      @socket = TCPSocket.open(@host, @port)
     end
 
     def reconnect
-      @socket = @socket || TCPsocket.open(@host, @port)
+      @socket = @socket || TCPSocket.open(@host, @port)
     end
 
     def send_symbol(message)
-      protocol_repsonse = send_message("SYMBOLS", message)
-      result = process_headers(SpamResult.new, protocol_repsonse[0...2])
-      result.tags = protocol_repsonse[3...-1].join(" ").split(',')
+      protocol_response = send_message("SYMBOLS", message)
+      result = process_headers protocol_response[0...2]
+      result.tags = protocol_response[3...-1].join(" ").split(',')
     end
 
     def check(message)
-      protocol_repsonse = send_message("CHECK", message)
-      result = process_headers(SpamResult.new, protocol_repsonse[0...2])
+      protocol_response = send_message("CHECK", message)
+      result = process_headers protocol_response[0...2]
     end
 
     def report(message)
       protocol_response = send_message("REPORT", message)
-      result = process_headers(SpamResult.new, protocol_repsonse[0...2])
+      result = process_headers protocol_response[0...2]
       result.report = protocol_response[3..-1].join
     end
 
@@ -61,7 +60,7 @@ module RubySpamAssassin
 
     def ping
       protocol_response = send_message("PING", message)
-      result = process_headers(SpamResult.new, protocol_repsonse[0])
+      result = process_headers protocol_response[0]
     end
 
     alias :process :report
@@ -79,7 +78,8 @@ module RubySpamAssassin
       response
     end
 
-    def process_headers(result, headers)
+    def process_headers(headers)
+      result = SpamResult.new
       headers.each do |line|
         case line.chomp
           when /(.+)\/(.+) (.+) (.+)/ then
@@ -94,6 +94,7 @@ module RubySpamAssassin
             result.content_length = $1
         end
       end
+      result
     end
   end
 end
