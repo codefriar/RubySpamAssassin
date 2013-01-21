@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rubyspamassassin by noeticpenguin</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Rubyspamassassin</h1>
+        <p>Ruby Spam Assassin; Kills Spam Dead. Perhaps before it's sent! (Gasp!)</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/noeticpenguin/RubySpamAssassin" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/noeticpenguin/RubySpamAssassin/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/noeticpenguin/RubySpamAssassin/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <p>= RubySpamAssassin</p>
+
+<p>Interacting with SpamAssassin's daemon process used to be a pain in the ass. Shelling out to run spamc, parsing the text etc.</p>
+
+<p>Now you just need to:
+    require 'RubySpamAssassin'
+    include RubySpamAssassin</p>
+
+<pre><code>spam_client = SpamClient.new("host_running_spamd", "port_spamd_is_listening_on", timeout)
+# MyMailer is your ActionMailer
+# check will also accept a string, if you're into that kind of thing
+report = spam_client.check(MyMailer.my_email.to_s)
+p report.inspect
+</code></pre>
+
+<p>Wasn't that easy?</p>
+
+<p>Cucumber and rspec tests are on their way.</p>
+
+<p>== Contributing to RubySpamAssassin</p>
+
+<ul>
+<li>Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet</li>
+<li>Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it</li>
+<li>Fork the project</li>
+<li>Start a feature/bugfix branch</li>
+<li>Commit and push until you are happy with your contribution</li>
+<li>Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.</li>
+<li>Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.</li>
+</ul><p>== Copyright</p>
+
+<p>Copyright (c) 2011 Kevin Poorman. See LICENSE.txt for further details.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/noeticpenguin">noeticpenguin</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
