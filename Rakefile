@@ -13,7 +13,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "RubySpamAssassin"
-  gem.homepage = "http://github.com/noeticpenguin/RubySpamAssassin"
+  gem.homepage = "http://noeticpenguin.github.com/RubySpamAssassin/"
   gem.license = "MIT"
   gem.summary = %Q{Gem provides a direct ruby interface to spamd running on localhost or remotely}
   gem.description = %Q{This gem makes it easy for developers to hand a body of text to spam assassin and ask get it's spam score, spam report etc. Supports the full Spamc protocol.}
