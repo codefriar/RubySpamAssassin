@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "spec/RubySpamAssassin_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = "http://github.com/noeticpenguin/RubySpamAssassin"
+  s.homepage = "http://noeticpenguin.github.com/RubySpamAssassin"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
