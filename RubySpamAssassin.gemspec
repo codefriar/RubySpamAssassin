@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "RubySpamAssassin"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kevin Poorman"]
-  s.date = "2013-01-21"
+  s.date = "2013-01-22"
   s.description = "This gem makes it easy for developers to hand a body of text to spam assassin and ask get it's spam score, spam report etc. Supports the full Spamc protocol."
   s.email = "kjp@brightleafsoftware.com"
   s.extra_rdoc_files = [
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
     "spec/RubySpamAssassin_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = "http://noeticpenguin.github.com/RubySpamAssassin"
+  s.homepage = "http://github.com/noeticpenguin/RubySpamAssassin"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
