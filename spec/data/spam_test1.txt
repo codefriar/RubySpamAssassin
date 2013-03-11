@@ -1,0 +1,39 @@
+X-Spam-Checker-Version: SpamAssassin 3.3.2 (2011-06-06) on
+  scanner.com
+X-Spam-Level: ***
+X-Spam-Status: No, score=3.4 required=5.0 tests=DATE_IN_PAST_24_48,
+  HTML_MESSAGE,HTML_MIME_NO_HTML_TAG,INVALID_MSGID,MIME_HTML_ONLY,
+  UNPARSEABLE_RELAY autolearn=no version=3.3.2
+Received: from dummyurl.com for <dummy@dummy.com>; Fri, 8 Mar 2013 14:53:15 -0500
+Date: Thu, 7 Mar 2013 00:02:33 -0500
+From: Dummy <dummy@dummy.com>
+Reply-To: Dummy <dummy@dummy.com>
+To: dummy@dummy.com
+Message-Id: testdummy@dummy.com
+Subject: Work Report
+Mime-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Auto-Submitted: auto-generated
+
+Hey,
+
+Was wondering if I could get a copy of the work report you made yesterday. Thanks!
+Spam detection software, running on the system "scan1.blue.postageapp.com", has
+identified this incoming email as possible spam.  The original message
+has been attached to this so you can view it (if it isn't spam) or label
+similar future email.  If you have any questions, see
+the administrator of that system for details.
+
+Content preview:  Hey, Was wondering if I could get a copy of the work report
+   you made yesterday. Thanks! [...]
+
+Content analysis details:   (3.4 points, 5.0 required)
+
+ pts rule name              description
+---- ---------------------- --------------------------------------------------
+ 0.5 DATE_IN_PAST_24_48     Date: is 24 to 48 hours before Received: date
+ 0.0 HTML_MESSAGE           BODY: HTML included in message
+ 1.1 MIME_HTML_ONLY         BODY: Message only has text/html MIME parts
+ 0.6 HTML_MIME_NO_HTML_TAG  HTML-only message, but there is no HTML tag
+ 1.2 INVALID_MSGID          Message-Id is not valid, according to RFC 2822
+ 0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay lines

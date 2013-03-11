@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "RubySpamAssassin"
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Kevin Poorman"]
-  s.date = "2013-01-22"
+  s.authors = ["Kevin Poorman", "Stephan Leroux"]
+  s.date = "2013-03-11"
   s.description = "This gem makes it easy for developers to hand a body of text to spam assassin and ask get it's spam score, spam report etc. Supports the full Spamc protocol."
   s.email = "kjp@brightleafsoftware.com"
   s.extra_rdoc_files = [
@@ -26,17 +26,21 @@ Gem::Specification.new do |s|
     "Rakefile",
     "RubySpamAssassin.gemspec",
     "VERSION",
-    "features/RubySpamAssassin.feature",
-    "features/step_definitions/RubySpamAssassin_steps.rb",
-    "features/support/env.rb",
     "lib/RubySpamAssassin.rb",
+    "lib/RubySpamAssassin/report_parser.rb",
+    "lib/RubySpamAssassin/spam_client.rb",
+    "lib/RubySpamAssassin/spam_result.rb",
+    "spec/RubySpamAssassin/report_parser_spec.rb",
+    "spec/RubySpamAssassin/spam_client_spec.rb",
+    "spec/RubySpamAssassin/spam_result_spec.rb",
     "spec/RubySpamAssassin_spec.rb",
+    "spec/data/spam_test1.txt",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://noeticpenguin.github.com/RubySpamAssassin/"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Gem provides a direct ruby interface to spamd running on localhost or remotely"
 
   if s.respond_to? :specification_version then
@@ -44,18 +48,15 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
   end
