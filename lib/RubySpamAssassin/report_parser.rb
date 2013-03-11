@@ -10,7 +10,7 @@ class RubySpamAssassin::ReportParser
     rules = []
     pts_rules.each_with_index do |pts_rule, i|
       rules << {
-        :pts => pts_rule.split(' ')[0],
+        :pts => pts_rule.split(' ')[0].to_f,
         :rule => pts_rule.split(' ')[1],
         :text => rule_texts[i + 1]
       }
