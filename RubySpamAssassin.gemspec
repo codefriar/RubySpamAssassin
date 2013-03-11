@@ -26,14 +26,15 @@ Gem::Specification.new do |s|
     "Rakefile",
     "RubySpamAssassin.gemspec",
     "VERSION",
-    "features/RubySpamAssassin.feature",
-    "features/step_definitions/RubySpamAssassin_steps.rb",
-    "features/support/env.rb",
     "lib/RubySpamAssassin.rb",
     "lib/RubySpamAssassin/report_parser.rb",
     "lib/RubySpamAssassin/spam_client.rb",
     "lib/RubySpamAssassin/spam_result.rb",
+    "spec/RubySpamAssassin/report_parser_spec.rb",
+    "spec/RubySpamAssassin/spam_client_spec.rb",
+    "spec/RubySpamAssassin/spam_result_spec.rb",
     "spec/RubySpamAssassin_spec.rb",
+    "spec/data/spam_test1.txt",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://noeticpenguin.github.com/RubySpamAssassin/"
@@ -47,18 +48,15 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_dependency(%q<cucumber>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
     end
   else
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-    s.add_dependency(%q<cucumber>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
   end
