@@ -18,7 +18,8 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{Gem provides a direct ruby interface to spamd running on localhost or remotely}
   gem.description = %Q{This gem makes it easy for developers to hand a body of text to spam assassin and ask get it's spam score, spam report etc. Supports the full Spamc protocol.}
   gem.email = "kjp@brightleafsoftware.com"
-  gem.authors = ["Kevin Poorman"]
+  gem.authors = ["Kevin Poorman", "Stephan Leroux"]
+  gem.files.include 'lib/RubySpamAssassin/**.rb'
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
@@ -36,8 +37,5 @@ RSpec::Core::RakeTask.new(:rcov) do |spec|
   spec.pattern = 'spec/**/*_spec.rb'
   spec.rcov = true
 end
-
-require 'cucumber/rake/task'
-Cucumber::Rake::Task.new(:features)
 
 task :default => :spec
