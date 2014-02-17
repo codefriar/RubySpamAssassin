@@ -49,7 +49,7 @@ class RubySpamAssassin::SpamClient
 
   private
   def send_message(command, message)
-    length = message.length
+    length = message.bytesize
     @socket.write(command + " SPAMC/1.2\r\n")
     @socket.write("Content-length: " + length.to_s + "\r\n\r\n")
     @socket.write(message)
