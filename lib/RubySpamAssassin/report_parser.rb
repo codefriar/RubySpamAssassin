@@ -1,9 +1,9 @@
 class RubySpamAssassin::ReportParser
   LINE_REGEXP = /-$/
-  RULE_REGEXP = /[0-9]*[.][0-9]\s\w*\s/
+  RULE_REGEXP = /^[-|\s]?[0-9]*[.][0-9]\s\w*\s/
 
   def self.parse(report_text)
-    last_part = report_text.split(LINE_REGEXP)[1].sub(/^[\n\r]./,'').chomp.chomp
+    last_part = report_text.split(LINE_REGEXP)[1].sub(/^[\n\r]/,'').chomp.chomp
     pts_rules = last_part.gsub(RULE_REGEXP).collect { |sub| sub.chomp(' ') }
     rule_texts = last_part.split(RULE_REGEXP).collect { |text| text.delete("\n").squeeze.chomp(' ').sub(/^\s/, '') }
 
