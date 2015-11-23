@@ -37,18 +37,18 @@ class RubySpamAssassin::SpamClient
   end
 
   def skip
-    protocol_response = send_message("SKIP", message)
+    protocol_response = send_message("SKIP")
   end
 
   def ping
-    protocol_response = send_message("PING", message)
+    protocol_response = send_message("PING")
     result = process_headers protocol_response[0]
   end
 
   alias :process :report
 
   private
-  def send_message(command, message)
+  def send_message(command, message = "")
     length = message.bytesize
     @socket.write(command + " SPAMC/1.2\r\n")
     @socket.write("Content-length: " + length.to_s + "\r\n\r\n")
