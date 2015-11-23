@@ -1,16 +1,9 @@
 class RubySpamAssassin::SpamClient
-  require 'socket'
+  require_relative '../single_connection_pool'
   require 'timeout'
 
   def initialize(host="localhost", port=783, timeout=5)
-    @port = port
-    @host = host
-    @timeout =timeout
-    @socket = TCPSocket.open(@host, @port)
-  end
-
-  def reconnect
-    @socket = @socket || TCPSocket.open(@host, @port)
+    @connection_pool = SingleConnectionPool.new(host: host, port: port, timeout: timeout)
   end
 
   def send_symbol(message)
@@ -50,14 +43,13 @@ class RubySpamAssassin::SpamClient
   private
   def send_message(command, message = "")
     length = message.bytesize
-    @socket.write(command + " SPAMC/1.2\r\n")
-    @socket.write("Content-length: " + length.to_s + "\r\n\r\n")
-    @socket.write(message)
-    @socket.shutdown(1) #have to shutdown sending side to get response
-    response = @socket.readlines
-    @socket.close #might as well close it now
-
-    response
+    @connection_pool.with do |socket|
+      socket.write(command + " SPAMC/1.2\r\n")
+      socket.write("Content-length: " + length.to_s + "\r\n\r\n")
+      socket.write(message)
+      socket.shutdown(1) #have to shutdown sending side to get response
+      socket.readlines
+    end
   end
 
   def process_headers(headers)
