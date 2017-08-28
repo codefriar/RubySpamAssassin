@@ -17,12 +17,13 @@ class RubySpamAssassin::SpamClient
     result = process_headers protocol_response[0...2]
   end
 
-  def tell(message, message_class, set=true, user=nil)
-    headers = []
-    headers.push("Message-class: #{message_class}")
-    headers.push(set ? "Set: local" : "Remove: local")
-    headers.push("User: #{user}") if !user.nil?
-    protocol_response = send_message("TELL", message, headers)
+  def tell(message, headers={})
+    h = []
+    h << "Message-class: #{headers[:message_class]}" if headers[:message_class]
+    h << "Set: #{headers[:set]}" if headers[:set]
+    h << "Remove: #{headers[:remove]}" if headers[:remove]
+    h << "User: #{headers[:user]}" if headers[:user]
+    protocol_response = send_message("TELL", message, h)
     result = process_headers protocol_response[0...2]
   end
 
