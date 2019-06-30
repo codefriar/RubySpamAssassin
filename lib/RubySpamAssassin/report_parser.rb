@@ -5,7 +5,7 @@ class RubySpamAssassin::ReportParser
   def self.parse(report_text)
     last_part = report_text.split(LINE_REGEXP)[1].sub(/^[\n\r]/,'').chomp.chomp
     pts_rules = last_part.gsub(RULE_REGEXP).collect { |sub| sub.chomp(' ') }
-    rule_texts = last_part.split(RULE_REGEXP).collect { |text| text.delete("\n").squeeze.chomp(' ').sub(/^\s/, '') }
+    rule_texts = last_part.split(RULE_REGEXP).collect { |text| text.delete("\n").squeeze(' ').strip }
 
     rules = []
     pts_rules.each_with_index do |pts_rule, i|
