@@ -7,14 +7,25 @@ Now you just need to:
     include RubySpamAssassin
 
     spam_client = SpamClient.new("host_running_spamd", "port_spamd_is_listening_on", timeout)
-    # MyMailer is your ActionMailer
-    # check will also accept a string, if you're into that kind of thing
-    report = spam_client.check(MyMailer.my_email.to_s)
+    message = File.read("/path/to/email.eml")
+
+    report = spam_client.check(message)
     p report.inspect
 
 Wasn't that easy?
 
 Cucumber and rspec tests are on their way.
+
+== Using TELL command
+
+To learn a message as spam:
+    spam_client.tell(message, message_class: "spam", set: "local")
+To learn a message as ham:
+    spam_client.tell(message, message_class: "ham", set: "local")
+To forget a learned message:
+    spam_client.tell(message, remove: "local")
+You can also set username of the user on whose behalf this scan is being performed:
+    spam_client.tell(message, message_class: "spam", set: "local", user: "johndoe")
 
 == Contributing to RubySpamAssassin
  
@@ -29,4 +40,3 @@ Cucumber and rspec tests are on their way.
 == Copyright
 
 Copyright (c) 2011 Kevin Poorman. See LICENSE.txt for further details.
-

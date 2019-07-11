@@ -17,6 +17,16 @@ class RubySpamAssassin::SpamClient
     result = process_headers protocol_response[0...2]
   end
 
+  def tell(message, headers={})
+    h = []
+    h << "Message-class: #{headers[:message_class]}" if headers[:message_class]
+    h << "Set: #{headers[:set]}" if headers[:set]
+    h << "Remove: #{headers[:remove]}" if headers[:remove]
+    h << "User: #{headers[:user]}" if headers[:user]
+    protocol_response = send_message("TELL", message, h)
+    result = process_headers protocol_response[0...2]
+  end
+
   def report(message)
     protocol_response = send_message("REPORT", message)
     result = process_headers protocol_response[0...2]
@@ -41,10 +51,14 @@ class RubySpamAssassin::SpamClient
   alias :process :report
 
   private
-  def send_message(command, message = "")
+
+  def send_message(command, message="", headers=[])
     length = message.bytesize
     @connection_pool.with do |socket|
       socket.write(command + " SPAMC/1.2\r\n")
+      headers.each do |h|
+        socket.write(h + "\r\n")
+      end
       socket.write("Content-length: " + length.to_s + "\r\n\r\n")
       socket.write(message)
       socket.shutdown(1) #have to shutdown sending side to get response
